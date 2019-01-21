@@ -4,7 +4,7 @@
     顶部导航栏
     <div class="right-menu">
       <div class="notice">
-        <badge>
+        <badge v-bind:max="noticeMax" v-bind:value="noticeCount" v-bind:is-hidden="isHidden">
           <img class="avatar" src="../../static/icons/notice.svg">
         </badge>
       </div>
@@ -37,8 +37,16 @@
 import Badge from '@/components/badge';
 
 export default {
+  name: 'Navbar',
   components: {
     Badge
+  },
+  data() {
+    return {
+      noticeMax: 99,
+      noticeCount: 12,
+      isHidden: false
+    };
   }
 };
 </script>
@@ -54,7 +62,8 @@ export default {
     float: right
     .notice
       display: inline-block
-      margin-right: 15px
+      margin-right: 20px
+      cursor: pointer
       .avatar
         width: 40px
         height: 40px
@@ -62,6 +71,7 @@ export default {
     .my
       display: inline-block
       line-height: 60px
+      cursor: pointer
       .avatar
         width: 40px
         height: 40px
