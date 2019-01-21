@@ -1,13 +1,79 @@
 <template>
-  <div class="navbar">顶部导航栏</div>
+  <div class="navbar">
+    <i class="el-icon-delete"></i>
+    顶部导航栏
+    <div class="right-menu">
+      <div class="notice">
+        <badge>
+          <img class="avatar" src="../../static/icons/notice.svg">
+        </badge>
+      </div>
+      <el-dropdown>
+        <div class="my">
+          <img class="avatar" src="../../static/icons/avatar.png">
+          <span class="right-item">大脸猫</span>
+          <i class="el-icon-arrow-down el-icon--right"></i>
+        </div>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>
+            <div class="dropdown-item">
+              <img class="my-icon" src="../../static/icons/profile.svg">
+              <span>我的</span>
+            </div>
+          </el-dropdown-item>
+          <el-dropdown-item divided>
+            <div class="dropdown-item">
+              <img class="my-icon" src="../../static/icons/logout.svg">
+              <span>退出</span>
+            </div>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
+  </div>
 </template>
 
-<style>
-.navbar {
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
+<script>
+import Badge from '@/components/badge';
+
+export default {
+  components: {
+    Badge
+  }
+};
+</script>
+
+<style lang="stylus">
+.navbar
+  width: calc(100% - 20px)
+  padding: 0px 10px
+  height: 60px
+  line-height: 60px
   background-color: #fff
-}
+  .right-menu
+    float: right
+    .notice
+      display: inline-block
+      margin-right: 15px
+      .avatar
+        width: 40px
+        height: 40px
+        vertical-align: middle
+    .my
+      display: inline-block
+      line-height: 60px
+      .avatar
+        width: 40px
+        height: 40px
+        vertical-align: middle
+      .right-item
+        line-height: 60px
+        font-weight: bolder
+.dropdown-item
+  .my-icon
+    vertical-align: middle
+    width: 18px
+    height: 18px
+    margin-right: 10px
 </style>
 
