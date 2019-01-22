@@ -1,7 +1,9 @@
 <template>
   <div class="navbar">
-    <i class="el-icon-delete"></i>
-    顶部导航栏
+    <a href="" class="site">
+      <img src="../../static/icons/logo.png" alt="" class="logo">
+      <span>Vue-generator</span>
+    </a>
     <div class="right-menu">
       <div class="notice">
         <badge v-bind:max="noticeMax" v-bind:value="noticeCount" v-bind:is-hidden="isHidden">
@@ -58,6 +60,18 @@ export default {
   height: 60px
   line-height: 60px
   background-color: #fff
+  .site
+    position: absolute
+    float: left 
+    width: 220px
+    left: 0px
+    text-decoration: none
+    font-size: 20px
+    font-weight: bolder
+    .logo
+      width: 40px
+      height: 40px
+      vertical-align: middle
   .right-menu
     float: right
     .notice
