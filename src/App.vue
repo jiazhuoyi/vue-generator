@@ -1,21 +1,8 @@
 <template>
-  <!-- <div id="app">
-    <div class="app-wrapper">
-      <navbar></navbar>
-      <div></div>
-      <sidebar class="sidebar-container"></sidebar>
-
-      <div class="main-container">
-        <div class="main-page">
-          <router-view/>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div id="app">
     <navbar></navbar>
     <div class="app-wrapper">
-      <sidebar class="sidebar-container"></sidebar>
+      <sidebar class="sidebar-container" :side-bar="sidenav"></sidebar>
       <div class="main-container">
         <router-view/>
       </div>
@@ -26,12 +13,26 @@
 <script>
 import Sidebar from '@/components/sidebar';
 import Navbar from '@/components/navbar';
+import route from '@/router';
 
 export default {
   name: 'App',
   components: {
     Sidebar,
     Navbar
+  },
+  data() {
+    return {
+      sidenav: []
+    };
+  },
+  created() {
+    this.sidenav = [];
+    route.options.routes.forEach((item) => {
+      if (item.icon) {
+        this.sidenav.push(item);
+      }
+    });
   }
 };
 </script>

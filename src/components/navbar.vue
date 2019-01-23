@@ -62,7 +62,7 @@ export default {
   background-color: #fff
   .site
     position: absolute
-    float: left 
+    float: left
     width: 220px
     left: 0px
     text-decoration: none
