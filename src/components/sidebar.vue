@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <el-menu
-      default-active="this.$route.path"
+      :default-active="$route.path"
       class="el-menu-verical-demo bar"
       background-color="#545c64"
       text-color="#fff"
