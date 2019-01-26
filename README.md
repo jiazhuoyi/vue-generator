@@ -1,6 +1,18 @@
 # vue-generator
 
-> A Vue.js project
+> A Vue.js project for admin
+
+<p>
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.5.2-brightgreen.svg" alt="vue">
+  </a>
+  <a href="https://github.com/ElemeFE/element">
+    <img src="https://img.shields.io/badge/element--ui-2.4.11-brightgreen.svg" alt="element-ui">
+  </a>
+  <a href="https://github.com/PanJiaChen/vue-element-admin/releases">
+    <img src="https://img.shields.io/github/release/PanJiaChen/vue-element-admin.svg" alt="GitHub release">
+  </a>
+</p>
 
 ## Build Setup
 

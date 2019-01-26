@@ -1,72 +1,26 @@
 <template>
   <div id="app">
-    <navbar></navbar>
-    <div class="app-wrapper">
-      <sidebar class="sidebar-container" :side-bar="sidenav"></sidebar>
-      <div class="main-container">
-        <router-view/>
-      </div>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Sidebar from '@/components/sidebar';
-import Navbar from '@/components/navbar';
-import route from '@/router';
-
 export default {
-  name: 'App',
-  components: {
-    Sidebar,
-    Navbar
-  },
-  data() {
-    return {
-      sidenav: []
-    };
-  },
-  created() {
-    this.sidenav = [];
-    route.options.routes.forEach((item) => {
-      if (item.icon) {
-        this.sidenav.push(item);
-      }
-    });
-  }
+  name: 'App'
 };
 </script>
 
 <style lang="stylus">
-body {
-  margin: 0px
-  padding: 0px
-  background-color: #E2E2E2
-}
-
 #app
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  width: 100%
-  height: 100%
-  position: relative
-  .app-wrapper
-    width: 100%;
-    height: 100%
-    position: relative
-    .sidebar-container
-      min-height: 100%
-      width: 220px
-      position: fixed
-      top: 60px
-      left: 0
-      bottom: 0
-      z-index: 1000
-    .main-container
-      width: calc(100% - 220px)
-      position: relative
-      margin-left: 220px
+  width: 100%;
+  height: 100%;
+body
+  margin: 0px
+  padding: 0px
+  background-color: #E2E2E2
 </style>

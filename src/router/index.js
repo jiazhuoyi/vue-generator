@@ -5,6 +5,7 @@ import Login from '@/views/login';
 import Info from '@/views/my/info';
 import UpdatePassword from '@/views/my/update-password';
 import Article from '@/views/article';
+import Main from '@/views/main';
 
 Vue.use(Router);
 
@@ -13,10 +14,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Dashboard',
+      name: 'Index',
       title: '首页',
       icon: 'menu',
-      component: Dashboard
+      redirect: '/dashboard',
+      component: Main,
+      children: [{
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: Dashboard
+      }]
     },
     {
       path: '/login',
@@ -28,7 +35,7 @@ export default new Router({
       name: 'My',
       title: '我的',
       icon: 'setting',
-      component: () => import('@/views/my'),
+      component: Main,
       children: [
         {
           path: 'info',
@@ -44,11 +51,19 @@ export default new Router({
       ]
     },
     {
-      path: '/article',
-      name: 'Article',
+      path: '/article_index',
+      name: 'Article_index',
       title: '文章',
+      redirect: '/article',
       icon: 'tickets',
-      component: Article
+      component: Main,
+      children: [
+        {
+          path: '/article',
+          name: 'article',
+          component: Article
+        }
+      ]
     },
     {
       path: '*',

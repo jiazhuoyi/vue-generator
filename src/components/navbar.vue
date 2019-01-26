@@ -56,10 +56,13 @@ export default {
 <style lang="stylus">
 .navbar
   width: calc(100% - 20px)
+  position: fixed
+  top: 0px
   padding: 0px 10px
   height: 60px
   line-height: 60px
   background-color: #fff
+  z-index: 1000
   .site
     position: absolute
     float: left
