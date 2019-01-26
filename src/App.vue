@@ -20,7 +20,12 @@ export default {
   width: 100%;
   height: 100%;
 body
+  width: 100%
+  height: 100%
   margin: 0px
   padding: 0px
   background-color: #E2E2E2
+html
+  width: 100%
+  height: 100%
 </style>

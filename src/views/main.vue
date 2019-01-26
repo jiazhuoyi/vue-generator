@@ -38,20 +38,23 @@ export default {
 </script>
 
 <style lang="stylus">
-.app-wrapper
-  width: 100%;
-  margin-top: 60px
-  position: relative
-  .sidebar-container
-    min-height: 100%
-    width: 220px
-    position: fixed
-    top: 60px
-    left: 0
-    bottom: 0
-    z-index: 1000
-  .main-container
-    width: calc(100% - 220px)
+.main
+  width: 100%
+  height: 100%
+  .app-wrapper
+    width: 100%;
+    margin-top: 60px
     position: relative
-    margin-left: 220px
+    .sidebar-container
+      min-height: 100%
+      width: 220px
+      position: fixed
+      top: 60px
+      left: 0
+      bottom: 0
+      z-index: 1000
+    .main-container
+      width: calc(100% - 220px)
+      position: relative
+      margin-left: 220px
 </style>
