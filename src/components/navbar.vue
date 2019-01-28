@@ -1,29 +1,29 @@
 <template>
   <div class="navbar">
-    <a href="" class="site">
+    <router-link to="/" class="site">
       <img src="../../static/icons/logo.png" alt="" class="logo">
       <span>Vue-generator</span>
-    </a>
+    </router-link>
     <div class="right-menu">
       <div class="notice">
         <badge v-bind:max="noticeMax" v-bind:value="noticeCount" v-bind:is-hidden="isHidden">
           <img class="avatar" src="../../static/icons/notice.svg">
         </badge>
       </div>
-      <el-dropdown>
+      <el-dropdown trigger="click" @command="handleCommand">
         <div class="my">
           <img class="avatar" src="../../static/icons/avatar.png">
           <span class="right-item">大脸猫</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>
+          <el-dropdown-item command="my">
             <div class="dropdown-item">
               <img class="my-icon" src="../../static/icons/profile.svg">
               <span>我的</span>
             </div>
           </el-dropdown-item>
-          <el-dropdown-item divided>
+          <el-dropdown-item divided command="logout">
             <div class="dropdown-item">
               <img class="my-icon" src="../../static/icons/logout.svg">
               <span>退出</span>
@@ -49,6 +49,17 @@ export default {
       noticeCount: 12,
       isHidden: false
     };
+  },
+  methods: {
+    handleCommand(command) {
+      if (command === 'logout') {
+        this.$router.push({ path: '/login' });
+      } else if (command === 'my') {
+        this.$router.push({ path: '/my/info' });
+      } else {
+        this.$router.push({ path: '/dashboard' });
+      }
+    }
   }
 };
 </script>

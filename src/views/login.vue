@@ -74,9 +74,12 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$message({
-            message: '登录成功',
-            type: 'success'
+          this.$store.dispatch('login', this.loginForm).then(() => {
+            this.$message({
+              message: '登录成功',
+              type: 'success'
+            });
+            this.$router.push({ path: '/' });
           });
         }
         return false;
