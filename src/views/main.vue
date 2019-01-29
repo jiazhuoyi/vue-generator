@@ -38,23 +38,25 @@ export default {
 </script>
 
 <style lang="stylus">
+@import "~@/styles/index"
 .main
   width: 100%
   height: 100%
   .app-wrapper
     width: 100%;
-    margin-top: 60px
+    margin-top: $nav-height
     position: relative
     .sidebar-container
       min-height: 100%
-      width: 220px
+      width: $sidebar-width
       position: fixed
-      top: 60px
+      top: $nav-height
       left: 0
       bottom: 0
       z-index: 1000
     .main-container
-      width: calc(100% - 220px)
+      width: auto
+      box-sizing: border-box
       position: relative
-      margin-left: 220px
+      margin-left: $sidebar-width
 </style>

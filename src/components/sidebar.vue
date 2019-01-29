@@ -35,8 +35,8 @@ export default {
 <style lang="stylus">
 .sidebar
   text-align: left
-  color: #fff
-  background-color: #304156
+  color: $sidebar-color
+  background-color: $sidebar-bg-color
   .bar
     height: 100%
 </style>

@@ -6,7 +6,7 @@
     </router-link>
     <div class="right-menu">
       <div class="notice">
-        <badge v-bind:max="noticeMax" v-bind:value="noticeCount" v-bind:is-hidden="isHidden">
+        <badge :max="noticeMax" :value="noticeCount" :is-hidden="isHidden">
           <img class="avatar" src="../../static/icons/notice.svg">
         </badge>
       </div>
@@ -23,7 +23,7 @@
               <span>我的</span>
             </div>
           </el-dropdown-item>
-          <el-dropdown-item divided command="logout">
+          <el-dropdown-item command="logout" divided>
             <div class="dropdown-item">
               <img class="my-icon" src="../../static/icons/logout.svg">
               <span>退出</span>
@@ -65,26 +65,28 @@ export default {
 </script>
 
 <style lang="stylus">
+@import "~@/styles/index"
 .navbar
-  width: calc(100% - 20px)
+  width: 100%
+  box-sizing: border-box
   position: fixed
   top: 0px
-  padding: 0px 10px
-  height: 60px
-  line-height: 60px
-  background-color: #fff
+  padding: 0px $nav-padding
+  height: $nav-height
+  line-height: $nav-height
+  background-color: $navbackgroundColor
   z-index: 1000
   .site
     position: absolute
     float: left
-    width: 220px
+    width: $navSiteWidth
     left: 0px
     text-decoration: none
     font-size: 20px
     font-weight: bolder
     .logo
-      width: 40px
-      height: 40px
+      width: $navLogoWidth
+      height: $navLogoHeight
       vertical-align: middle
   .right-menu
     float: right
@@ -93,19 +95,19 @@ export default {
       margin-right: 20px
       cursor: pointer
       .avatar
-        width: 40px
-        height: 40px
+        width: $navLogoWidth
+        height: $navLogoHeight
         vertical-align: middle
     .my
       display: inline-block
-      line-height: 60px
+      line-height: $nav-height
       cursor: pointer
       .avatar
-        width: 40px
-        height: 40px
+        width: $navLogoWidth
+        height: $navLogoHeight
         vertical-align: middle
       .right-item
-        line-height: 60px
+        line-height: $navLogoHeight
         font-weight: bolder
 .dropdown-item
   .my-icon
