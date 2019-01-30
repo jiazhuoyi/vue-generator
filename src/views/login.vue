@@ -79,7 +79,9 @@ export default {
               message: '登录成功',
               type: 'success'
             });
-            this.$router.push({ path: '/' });
+            const ref = this.$route.query.redirect;
+            const jumpPage = ref || '/';
+            this.$router.replace({ path: jumpPage });
           });
         }
         return false;

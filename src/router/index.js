@@ -6,10 +6,11 @@ import Info from '@/views/my/info';
 import UpdatePassword from '@/views/my/update-password';
 import Article from '@/views/article';
 import Main from '@/views/main';
+import store from '@/store';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -18,10 +19,16 @@ export default new Router({
       title: '首页',
       icon: 'menu',
       redirect: '/dashboard',
+      meta: {
+        requireAuth: true
+      },
       component: Main,
       children: [{
         path: 'dashboard',
         name: 'Dashboard',
+        meta: {
+          requireAuth: true
+        },
         component: Dashboard
       }]
     },
@@ -35,32 +42,47 @@ export default new Router({
       name: 'My',
       title: '我的',
       icon: 'setting',
+      meta: {
+        requireAuth: true
+      },
       component: Main,
       children: [
         {
           path: 'info',
           name: 'Info',
           title: '个人信息',
+          meta: {
+            requireAuth: true
+          },
           component: Info
         }, {
           path: 'update-password',
           name: 'UpdatePassword',
           title: '修改密码',
+          meta: {
+            requireAuth: true
+          },
           component: UpdatePassword
         }
       ]
     },
     {
-      path: '/article_index',
-      name: 'Article_index',
+      path: '/article',
+      name: 'Article',
       title: '文章',
-      redirect: '/article',
+      redirect: '/article/article_index',
       icon: 'tickets',
+      meta: {
+        requireAuth: true
+      },
       component: Main,
       children: [
         {
-          path: '/article',
-          name: 'article',
+          path: 'article_index',
+          name: 'article_index',
+          meta: {
+            requireAuth: true
+          },
           component: Article
         }
       ]
@@ -68,7 +90,22 @@ export default new Router({
     {
       path: '*',
       name: '404',
+      meta: {},
       component: () => import('@/views/404')
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    if (store.state.user.status === 'online') {
+      next();
+    } else {
+      next({ path: '/login', query: { redirect: to.fullPath } });
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;

@@ -53,7 +53,13 @@ export default {
   methods: {
     handleCommand(command) {
       if (command === 'logout') {
-        this.$router.push({ path: '/login' });
+        this.$store.dispatch('logout', this.loginForm).then(() => {
+          this.$message({
+            message: '退出登录',
+            type: 'success'
+          });
+          this.$router.push({ path: '/login' });
+        });
       } else if (command === 'my') {
         this.$router.push({ path: '/my/info' });
       } else {
