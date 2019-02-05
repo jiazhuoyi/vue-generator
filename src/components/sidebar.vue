@@ -9,7 +9,7 @@
       active-text-color="#ffd04b">
       <sidebar-item
         v-for="(item, index) in sideBar"
-        :key="item.name"
+        :key="item.meta.title"
         :index="index"
         :item="item">
       </sidebar-item>

@@ -1,20 +1,20 @@
 <template>
   <div>
     <el-menu-item :index="getLink(item.path)" v-if="hasShowingChild(item)">
-      <i :class="`el-icon-${item.icon}`"></i>
-      <span slot="title">{{item.title}}</span>
+      <i :class="`el-icon-${item.meta.icon}`"></i>
+      <span slot="title">{{item.meta.title}}</span>
     </el-menu-item>
     <el-submenu :index="`${index + 1}`" v-else>
       <template slot="title">
-        <i :class="`el-icon-${item.icon}`"></i>
-        <span>{{item.title}}</span>
+        <i :class="`el-icon-${item.meta.icon}`"></i>
+        <span>{{item.meta.title}}</span>
       </template>
       <el-menu-item
         v-for="child in item.children"
-        v-if="child.title"
-        :key="child.name"
+        v-if="child.meta.title"
+        :key="child.meta.name"
         :index="getLink(item.path, child.path)">
-        {{child.title}}
+        {{child.meta.title}}
       </el-menu-item>
     </el-submenu>
   </div>
@@ -34,7 +34,7 @@ export default {
     hasShowingChild(item) {
       let showing = [];
       showing = item.children.filter((child) => {
-        if (child.title) {
+        if (child.meta.title) {
           return true;
         }
         return false;

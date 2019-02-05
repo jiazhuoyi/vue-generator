@@ -15,16 +15,24 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      title: '首页',
-      icon: 'menu',
+      name: 'default',
       redirect: '/dashboard',
       meta: {
         requireAuth: true
       },
+      component: Main
+    },
+    {
+      path: '/dashboard',
+      name: 'Index',
+      meta: {
+        requireAuth: true,
+        title: '首页',
+        icon: 'menu'
+      },
       component: Main,
       children: [{
-        path: 'dashboard',
+        path: '',
         name: 'Dashboard',
         meta: {
           requireAuth: true
@@ -40,27 +48,27 @@ const router = new Router({
     {
       path: '/my',
       name: 'My',
-      title: '我的',
-      icon: 'setting',
       meta: {
-        requireAuth: true
+        requireAuth: true,
+        title: '我的',
+        icon: 'setting'
       },
       component: Main,
       children: [
         {
           path: 'info',
           name: 'Info',
-          title: '个人信息',
           meta: {
-            requireAuth: true
+            requireAuth: true,
+            title: '个人信息'
           },
           component: Info
         }, {
           path: 'update-password',
           name: 'UpdatePassword',
-          title: '修改密码',
           meta: {
-            requireAuth: true
+            requireAuth: true,
+            title: '修改密码'
           },
           component: UpdatePassword
         }
@@ -68,18 +76,16 @@ const router = new Router({
     },
     {
       path: '/article',
-      name: 'Article',
-      title: '文章',
-      redirect: '/article/article_index',
-      icon: 'tickets',
       meta: {
-        requireAuth: true
+        requireAuth: true,
+        icon: 'tickets',
+        title: '文章'
       },
       component: Main,
       children: [
         {
-          path: 'article_index',
-          name: 'article_index',
+          path: '',
+          name: 'Article',
           meta: {
             requireAuth: true
           },

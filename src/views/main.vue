@@ -29,7 +29,7 @@ export default {
   created() {
     this.sidenav = [];
     route.options.routes.forEach((item) => {
-      if (item.icon) {
+      if (item.meta && item.meta.title) {
         this.sidenav.push(item);
       }
     });
