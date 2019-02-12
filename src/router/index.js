@@ -19,12 +19,10 @@ const router = new Router({
       redirect: '/dashboard',
       meta: {
         requireAuth: true
-      },
-      component: Main
+      }
     },
     {
       path: '/dashboard',
-      name: 'Index',
       meta: {
         requireAuth: true,
         title: '首页',

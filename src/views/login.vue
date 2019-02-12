@@ -13,7 +13,7 @@
           status-icon
           ref="loginForm"
           :rules="loginRules">
-          <el-form-item prop="account">
+          <el-form-item prop="account" :error="accountError">
             <el-input v-model="loginForm.account" placeholder="请输入用户名">
               <template slot="prepend">
                 <i class="fa fa-user-circle-o"></i>
@@ -60,6 +60,7 @@ export default {
         account: '',
         password: ''
       },
+      accountError: '',
       loginRules: {
         account: [
           { validator: validateAccount, trigger: 'blur' }
@@ -72,17 +73,25 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.accountError = '';
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          this.$store.dispatch('login', this.loginForm).then(() => {
+          const result = await this.$store.dispatch('login', this.loginForm);
+          if (result.accessToken) {
             this.$message({
               message: '登录成功',
               type: 'success'
             });
+            localStorage.setItem('token_exp', new Date().getTime());
+            const user = await this.$store.dispatch('getUserInfo', result.account);
             const ref = this.$route.query.redirect;
             const jumpPage = ref || '/';
+            this.$store.commit('setUser', user.userInfo);
             this.$router.replace({ path: jumpPage });
-          });
+          }
+          if (result.status === 41001) {
+            this.accountError = result.msg;
+          }
         }
         return false;
       });

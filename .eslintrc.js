@@ -47,6 +47,7 @@ module.exports = {
     // disallows trailing commas
     'comma-dangle': ['error', 'never'],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-param-reassign': [2, { 'props': false }]
   }
 }

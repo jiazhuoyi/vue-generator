@@ -13,7 +13,7 @@
       <el-dropdown trigger="click" @command="handleCommand">
         <div class="my">
           <img class="avatar" src="../../static/icons/avatar.png">
-          <span class="right-item">大脸猫</span>
+          <span class="right-item">{{$store.state.user.name}}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
         <el-dropdown-menu slot="dropdown">

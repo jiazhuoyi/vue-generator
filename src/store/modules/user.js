@@ -1,3 +1,5 @@
+import request from '@/utils/request';
+
 const user = {
   state: {
     account: '',
@@ -5,7 +7,8 @@ const user = {
     status: '',
     token: '',
     roles: [],
-    avatar: ''
+    avatar: '',
+    hasRefreshToken: false
   },
   mutations: {
     setUser: (state, userInfo) => {
@@ -15,14 +18,27 @@ const user = {
     },
     deleteUser: (state) => {
       state.status = '';
+    },
+    setHasRefreshToken: (state, isTrue) => {
+      state.hasRefreshToken = isTrue;
     }
   },
   actions: {
-    login({ commit }, userInfo) {
-      const user1 = userInfo;
-      commit('setUser', user1);
-      return new Promise((resolve) => {
-        resolve();
+    login(context, userInfo) {
+      const account = userInfo.account.trim();
+      return request({
+        url: '/login',
+        method: 'post',
+        data: {
+          account,
+          password: userInfo.password
+        }
+      });
+    },
+    getUserInfo() {
+      return request({
+        url: '/user-info',
+        method: 'get'
       });
     },
     logout({ commit }) {
@@ -30,6 +46,9 @@ const user = {
       return new Promise((resolve) => {
         resolve();
       });
+    },
+    refreshToken() {
+      return request.get('/token');
     }
   }
 };
