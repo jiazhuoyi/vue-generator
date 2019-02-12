@@ -15,12 +15,10 @@ const user = {
       state.name = userInfo.name;
       state.account = userInfo.account;
       state.status = 'online';
+      state.token = userInfo.accessToken;
     },
     deleteUser: (state) => {
       state.status = '';
-    },
-    setHasRefreshToken: (state, isTrue) => {
-      state.hasRefreshToken = isTrue;
     }
   },
   actions: {
@@ -46,9 +44,6 @@ const user = {
       return new Promise((resolve) => {
         resolve();
       });
-    },
-    refreshToken() {
-      return request.get('/token');
     }
   }
 };

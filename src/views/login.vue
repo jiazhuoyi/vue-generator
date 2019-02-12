@@ -20,7 +20,7 @@
               </template>
             </el-input>
           </el-form-item>
-          <el-form-item prop="password">
+          <el-form-item prop="password" :error="passwordError">
             <el-input v-model="loginForm.password" type="password" placeholder="请输入密码">
               <template slot="prepend">
                 <i class="fa fa-key"></i>
@@ -61,6 +61,7 @@ export default {
         password: ''
       },
       accountError: '',
+      passwordError: '',
       loginRules: {
         account: [
           { validator: validateAccount, trigger: 'blur' }
@@ -74,6 +75,7 @@ export default {
   methods: {
     submitForm(formName) {
       this.accountError = '';
+      this.passwordError = '';
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           const result = await this.$store.dispatch('login', this.loginForm);
@@ -86,11 +88,16 @@ export default {
             const user = await this.$store.dispatch('getUserInfo', result.account);
             const ref = this.$route.query.redirect;
             const jumpPage = ref || '/';
+            const userInfo = user.userInfo;
+            userInfo.token = result.accessToken;
             this.$store.commit('setUser', user.userInfo);
             this.$router.replace({ path: jumpPage });
           }
           if (result.status === 41001) {
             this.accountError = result.msg;
+          }
+          if (result.status === 41002) {
+            this.passwordError = result.msg;
           }
         }
         return false;
