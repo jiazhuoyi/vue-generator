@@ -7,8 +7,7 @@ const user = {
     status: '',
     token: '',
     roles: [],
-    avatar: '',
-    hasRefreshToken: false
+    avatar: ''
   },
   mutations: {
     setUser: (state, userInfo) => {
@@ -19,6 +18,9 @@ const user = {
     },
     deleteUser: (state) => {
       state.status = '';
+      state.account = '';
+      state.name = '';
+      state.roles = [];
     }
   },
   actions: {
@@ -39,10 +41,23 @@ const user = {
         method: 'get'
       });
     },
-    logout({ commit }) {
-      commit('deleteUser');
-      return new Promise((resolve) => {
-        resolve();
+    logout({ commit }, account) {
+      return new Promise((resolve, reject) => {
+        request({
+          url: '/logout',
+          method: 'post',
+          data: {
+            account
+          }
+        }).then((result) => {
+          if (result.status === 200) {
+            commit('deleteUser');
+            resolve(result);
+          }
+          reject(JSON.stringify(result));
+        }).catch((error) => {
+          reject(JSON.stringify(error));
+        });
       });
     }
   }

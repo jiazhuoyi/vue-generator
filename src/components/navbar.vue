@@ -53,12 +53,18 @@ export default {
   methods: {
     handleCommand(command) {
       if (command === 'logout') {
-        this.$store.dispatch('logout', this.loginForm).then(() => {
+        const account = this.$store.state.user.account;
+        this.$store.dispatch('logout', account).then(() => {
           this.$message({
             message: '退出登录',
             type: 'success'
           });
           this.$router.push({ path: '/login' });
+        }).catch((error) => {
+          this.$message({
+            message: error,
+            type: 'warning'
+          });
         });
       } else if (command === 'my') {
         this.$router.push({ path: '/my/info' });
