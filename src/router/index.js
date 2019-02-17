@@ -6,6 +6,7 @@ import Info from '@/views/my/info';
 import UpdatePassword from '@/views/my/update-password';
 import Article from '@/views/article';
 import Main from '@/views/main';
+import Notice from '@/views/notice/notice';
 import store from '@/store';
 
 Vue.use(Router);
@@ -92,11 +93,30 @@ const router = new Router({
       ]
     },
     {
-      path: '*',
-      name: '404',
-      meta: {},
-      component: () => import('@/views/404')
+      path: '/notice',
+      meta: {
+        requireAuth: true,
+        icon: 'tickets',
+        title: '通知'
+      },
+      component: Main,
+      children: [
+        {
+          path: '',
+          name: 'Notice',
+          meta: {
+            requireAuth: true
+          },
+          component: Notice
+        }
+      ]
     }
+    // {
+    //   path: '*',
+    //   name: '404',
+    //   meta: {},
+    //   component: () => import('@/views/404')
+    // }
   ]
 });
 
