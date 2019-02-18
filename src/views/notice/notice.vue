@@ -44,7 +44,6 @@ export default {
   },
   async created() {
     const result = await getNotices();
-    console.log('---result:', result);
     this.notices = result.notices;
   }
 };
