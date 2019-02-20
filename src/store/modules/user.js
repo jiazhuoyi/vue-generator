@@ -13,14 +13,14 @@ const user = {
     setUser: (state, userInfo) => {
       state.name = userInfo.name;
       state.account = userInfo.account;
-      state.status = 'online';
       state.token = userInfo.accessToken;
     },
     deleteUser: (state) => {
-      state.status = '';
       state.account = '';
       state.name = '';
       state.roles = [];
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
     }
   },
   actions: {

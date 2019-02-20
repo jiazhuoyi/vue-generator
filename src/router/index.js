@@ -7,7 +7,6 @@ import UpdatePassword from '@/views/my/update-password';
 import Article from '@/views/article';
 import Main from '@/views/main';
 import Notice from '@/views/notice/notice';
-import store from '@/store';
 
 Vue.use(Router);
 
@@ -122,7 +121,8 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(r => r.meta.requireAuth)) {
-    if (store.state.user.status === 'online') {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
       next();
     } else {
       next({ path: '/login', query: { redirect: to.fullPath } });

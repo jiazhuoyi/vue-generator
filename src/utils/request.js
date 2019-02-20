@@ -58,6 +58,8 @@ request.interceptors.response.use((response) => {
   }
   if (response.status === 401) {
     // 没有权限
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     router.push({
       path: '/login'
     });
@@ -72,6 +74,8 @@ request.interceptors.response.use((response) => {
       case 401:
         errorMsg = '未登录';
         router.push({ path: '/login', query: { redirect: ref } });
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
         break;
       default:
         errorMsg = '该页面不存在';
