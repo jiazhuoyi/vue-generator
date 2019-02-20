@@ -42,7 +42,7 @@ request.interceptors.request.use(async (config) => {
   } else {
     // accessToken 和 freshToken 均过期
     router.push({
-      path: '/login'
+      path: '/login', query: { redirect: window.location.pathname }
     });
   }
   console.log('===========================================================');
@@ -64,17 +64,22 @@ request.interceptors.response.use((response) => {
   }
   return Promise.resolve(response.data);
 }, (error) => {
+  let errorMsg = error.response.data;
+  const ref = window.location.pathname;
+  console.log('请求发生错误的页面:', window.location.pathname);
   if (error.response) {
     switch (error.response.status) {
       case 401:
-        router.push({ path: '/login' });
+        errorMsg = '未登录';
+        router.push({ path: '/login', query: { redirect: ref } });
         break;
       default:
+        errorMsg = '该页面不存在';
         router.push({ path: '/404' });
         break;
     }
   }
-  return Promise.resolve(error.response);
+  return Promise.resolve(errorMsg);
 });
 
 export default request;

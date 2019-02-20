@@ -42,8 +42,10 @@ export default {
 .main
   width: 100%
   height: 100%
+  overflow: hidden
   .app-wrapper
     width: 100%;
+    height: 100%
     margin-top: $nav-height
     position: relative
     .sidebar-container
@@ -56,7 +58,9 @@ export default {
       z-index: 1000
     .main-container
       width: auto
+      height: 100%
       box-sizing: border-box
       position: relative
       margin-left: $sidebar-width
+      padding: $main-padding
 </style>

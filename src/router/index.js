@@ -110,13 +110,13 @@ const router = new Router({
           component: Notice
         }
       ]
+    },
+    {
+      path: '*',
+      name: '404',
+      meta: {},
+      component: () => import('@/views/404')
     }
-    // {
-    //   path: '*',
-    //   name: '404',
-    //   meta: {},
-    //   component: () => import('@/views/404')
-    // }
   ]
 });
 

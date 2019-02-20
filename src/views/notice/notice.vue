@@ -1,7 +1,7 @@
 <template>
   <div class="notice">
     <el-table
-      :data="notices" style="width: 80%">
+      :data="notices" style="width: 90%">
       <el-table-column
         type="index"
         label="序号"
