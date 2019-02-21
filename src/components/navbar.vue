@@ -5,11 +5,15 @@
       <span>Vue-generator</span>
     </router-link>
     <div class="right-menu">
-      <div class="notice">
-        <badge :max="noticeMax" :value="noticeCount" :is-hidden="isHidden">
-          <img class="avatar" src="../../static/icons/notice.svg">
-        </badge>
-      </div>
+      <router-link to="/notice">
+        <el-tooltip effect="dark" :content="`您有${noticeCount}条未读消息`" placement="bottom">
+          <div class="notice">
+            <badge :max="noticeMax" :value="noticeCount" :is-hidden="isHidden">
+              <img class="avatar" src="../../static/icons/notice.svg">
+            </badge>
+          </div>
+        </el-tooltip>
+      </router-link>
       <el-dropdown trigger="click" @command="handleCommand">
         <div class="my">
           <img class="avatar" src="../../static/icons/avatar.png">
@@ -88,6 +92,8 @@ export default {
   line-height: $nav-height
   background-color: $navbackgroundColor
   z-index: 1000
+  border-bottom: 1px solid #d8dce5
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.12), 0 0 3px 0 rgba(0,0,0,.04)
   .site
     position: absolute
     float: left

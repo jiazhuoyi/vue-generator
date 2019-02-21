@@ -25,7 +25,6 @@ body
   height: 100%
   margin: 0px
   padding: 0px
-  background-color: $bg-color
 html
   width: 100%
   height: 100%

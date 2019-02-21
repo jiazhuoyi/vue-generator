@@ -45,9 +45,10 @@ export default {
   overflow: hidden
   .app-wrapper
     width: 100%;
-    height: 100%
+    height: calc(100% - 30px)
     margin-top: $nav-height
     position: relative
+    overflow: scroll
     .sidebar-container
       min-height: 100%
       width: $sidebar-width
