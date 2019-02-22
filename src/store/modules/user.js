@@ -21,6 +21,7 @@ const user = {
       state.roles = [];
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
+      localStorage.removeItem('createTokenAt');
     }
   },
   actions: {

@@ -88,7 +88,7 @@ export default {
               localStorage.setItem('token_exp', new Date().getTime());
               const user = await this.$store.dispatch('getUserInfo', result.account);
               const ref = this.$route.query.redirect;
-              const jumpPage = ref || '/';
+              const jumpPage = (!ref || ref === '/login') ? '/' : ref;
               const userInfo = user.userInfo;
               userInfo.token = result.accessToken;
               this.$store.commit('setUser', user.userInfo);

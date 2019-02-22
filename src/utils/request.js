@@ -13,6 +13,9 @@ const request = axios.create({
 });
 
 request.interceptors.request.use(async (config) => {
+  if (config.url === '/login') {
+    return config;
+  }
   console.log('===========================================================');
   console.log('-----发送', config.method, '请求:', config.url);
   const createTokenAt = localStorage.getItem('createTokenAt');
