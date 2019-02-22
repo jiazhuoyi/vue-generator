@@ -1,29 +1,34 @@
 <template>
-  <div class="notice">
+  <div class="notice-container">
     <el-table
-      :data="notices" style="width: 90%">
+      :data="notices" border style="width: 90%">
       <el-table-column
         type="index"
         label="序号"
-        width="80">
+        width="80"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="date"
         label="日期"
-        width="280">
+        width="280"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="from"
         label="来自"
-        width="200">
+        width="200"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="content"
+        align="center"
         label="消息内容">
       </el-table-column>
       <el-table-column
         label="操作"
-        width="180">
+        width="180"
+        align="center">
         <template slot-scope="scope">
         <el-button type="primary" size="small">确定</el-button>
         </template>
@@ -50,6 +55,7 @@ export default {
 </script>
 
 <style lang="stylus">
-.article
-  font-size: 100px
+@import "~@/styles/index"
+.notice-container
+  padding: $main-padding
 </style>

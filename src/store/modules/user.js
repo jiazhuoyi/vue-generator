@@ -35,10 +35,17 @@ const user = {
         }
       });
     },
-    getUserInfo() {
-      return request({
-        url: '/user-info',
-        method: 'get'
+    getUserInfo(context) {
+      return new Promise((resolve, reject) => {
+        request({
+          url: '/user-info',
+          method: 'get'
+        }).then((result) => {
+          context.commit('setUser', result.userInfo);
+          resolve(result);
+        }).catch((error) => {
+          reject(error);
+        });
       });
     },
     logout({ commit }, account) {
@@ -54,9 +61,9 @@ const user = {
             commit('deleteUser');
             resolve(result);
           }
-          reject(JSON.stringify(result));
+          reject(result);
         }).catch((error) => {
-          reject(JSON.stringify(error));
+          reject(error);
         });
       });
     }

@@ -66,8 +66,8 @@ export default {
           this.$router.push({ path: '/login' });
         }).catch((error) => {
           this.$message({
-            message: error,
-            type: 'warning'
+            message: error.msg,
+            type: 'error'
           });
         });
       } else if (command === 'my') {

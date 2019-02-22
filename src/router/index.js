@@ -7,6 +7,7 @@ import UpdatePassword from '@/views/my/update-password';
 import Article from '@/views/article';
 import Main from '@/views/main';
 import Notice from '@/views/notice/notice';
+import UpdateInfo from '@/views/my/update-info';
 
 Vue.use(Router);
 
@@ -69,6 +70,13 @@ const router = new Router({
             title: '修改密码'
           },
           component: UpdatePassword
+        }, {
+          path: 'update-info',
+          name: 'UpdateInfo',
+          meta: {
+            requireAuth: true
+          },
+          component: UpdateInfo
         }
       ]
     },

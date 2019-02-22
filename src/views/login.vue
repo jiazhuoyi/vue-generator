@@ -77,32 +77,65 @@ export default {
       this.accountError = '';
       this.passwordError = '';
       this.$refs[formName].validate(async (valid) => {
-        if (valid) {
-          const result = await this.$store.dispatch('login', this.loginForm);
-          if (result.accessToken) {
-            this.$message({
-              message: '登录成功',
-              type: 'success'
-            });
-            localStorage.setItem('token_exp', new Date().getTime());
-            const user = await this.$store.dispatch('getUserInfo', result.account);
-            const ref = this.$route.query.redirect;
-            const jumpPage = ref || '/';
-            const userInfo = user.userInfo;
-            userInfo.token = result.accessToken;
-            this.$store.commit('setUser', user.userInfo);
-            this.$router.replace({ path: jumpPage });
+        try {
+          if (valid) {
+            const result = await this.$store.dispatch('login', this.loginForm);
+            if (result.accessToken) {
+              this.$message({
+                message: '登录成功',
+                type: 'success'
+              });
+              localStorage.setItem('token_exp', new Date().getTime());
+              const user = await this.$store.dispatch('getUserInfo', result.account);
+              const ref = this.$route.query.redirect;
+              const jumpPage = ref || '/';
+              const userInfo = user.userInfo;
+              userInfo.token = result.accessToken;
+              this.$store.commit('setUser', user.userInfo);
+              this.$router.replace({ path: jumpPage });
+            }
           }
-          if (result.status === 41001) {
-            this.accountError = result.msg;
+        } catch (error) {
+          if (error.status === 41001) {
+            this.accountError = error.msg;
           }
-          if (result.status === 41002) {
-            this.passwordError = result.msg;
+          if (error.status === 41002) {
+            this.passwordError = error.msg;
           }
         }
         return false;
       });
     }
+    // submitForm(formName) {
+    //   this.accountError = '';
+    //   this.passwordError = '';
+    //   this.$refs[formName].validate(async (valid) => {
+    //     if (valid) {
+    //       const result = await this.$store.dispatch('login', this.loginForm);
+    //       if (result.accessToken) {
+    //         this.$message({
+    //           message: '登录成功',
+    //           type: 'success'
+    //         });
+    //         localStorage.setItem('token_exp', new Date().getTime());
+    //         const user = await this.$store.dispatch('getUserInfo', result.account);
+    //         const ref = this.$route.query.redirect;
+    //         const jumpPage = ref || '/';
+    //         const userInfo = user.userInfo;
+    //         userInfo.token = result.accessToken;
+    //         this.$store.commit('setUser', user.userInfo);
+    //         this.$router.replace({ path: jumpPage });
+    //       }
+    //       if (result.status === 41001) {
+    //         this.accountError = result.msg;
+    //       }
+    //       if (result.status === 41002) {
+    //         this.passwordError = result.msg;
+    //       }
+    //     }
+    //     return false;
+    //   });
+    // }
   }
 };
 </script>
