@@ -4,7 +4,7 @@ import Dashboard from '@/views/dashboard';
 import Login from '@/views/login';
 import Info from '@/views/my/info';
 import UpdatePassword from '@/views/my/update-password';
-import Article from '@/views/article';
+import Photo from '@/views/photo';
 import Main from '@/views/main';
 import Notice from '@/views/notice/notice';
 import UpdateInfo from '@/views/my/update-info';
@@ -81,21 +81,21 @@ const router = new Router({
       ]
     },
     {
-      path: '/article',
+      path: '/Photo',
       meta: {
         requireAuth: true,
         icon: 'tickets',
-        title: '文章'
+        title: '图片上传'
       },
       component: Main,
       children: [
         {
           path: '',
-          name: 'Article',
+          name: 'Photo',
           meta: {
             requireAuth: true
           },
-          component: Article
+          component: Photo
         }
       ]
     },

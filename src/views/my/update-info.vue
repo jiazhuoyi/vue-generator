@@ -7,9 +7,10 @@
       <el-row>
         <el-col :span="8">
           <div class="img">
-            <img class="avatar" src="../../../static/icons/avatar.png">
+            <avatar :url="infoForm.avatar" width="160" height="160"></avatar>
           </div>
-          <el-button icon="el-icon-edit">修改头像</el-button>
+          <!-- <el-button icon="el-icon-edit">修改头像</el-button> -->
+          <upload-img :is-image="false" :on-success="uploadSuccess"></upload-img>
         </el-col>
         <el-col :span="16" style="text-align: left">
           <el-form
@@ -56,8 +57,14 @@
 </template>
 <script>
 import { updateUserInfo } from '@/api/user';
+import Avatar from '@/components/avatar';
+import UploadImg from '@/components/upload-img';
 
 export default {
+  components: {
+    Avatar,
+    UploadImg
+  },
   data() {
     const validateTel = (rule, value, callback) => {
       if (!(/^1[34578]\d{9}$/.test(value))) {
@@ -91,6 +98,9 @@ export default {
     this.infoForm = result.userInfo;
   },
   methods: {
+    uploadSuccess(res) {
+      this.infoForm.avatar = res.key;
+    },
     submitForm(formName) {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {

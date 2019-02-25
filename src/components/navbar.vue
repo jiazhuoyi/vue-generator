@@ -16,7 +16,12 @@
       </router-link>
       <el-dropdown trigger="click" @command="handleCommand">
         <div class="my">
-          <img class="avatar" src="../../static/icons/avatar.png">
+          <!-- <img class="avatar" src="../../static/icons/avatar.png"> -->
+          <!-- <img src="http://pndge8pv4.bkt.clouddn.com/avatar.jpg" class="avatar"> -->
+          <!-- <div class="avatar">
+            <avatar url="http://pndge8pv4.bkt.clouddn.com/avatar.jpg" width="40" height="40"></avatar>
+          </div> -->
+          <avatar :url="$store.state.user.avatar" width="40" height="40"></avatar>
           <span class="right-item">{{$store.state.user.name}}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
@@ -41,11 +46,13 @@
 
 <script>
 import Badge from '@/components/badge';
+import Avatar from '@/components/avatar';
 
 export default {
   name: 'Navbar',
   components: {
-    Badge
+    Badge,
+    Avatar
   },
   data() {
     return {
@@ -121,9 +128,11 @@ export default {
       line-height: $nav-height
       cursor: pointer
       .avatar
-        width: $navLogoWidth
-        height: $navLogoHeight
-        vertical-align: middle
+        // display: inline
+        // width: $navLogoWidth
+        // height: $navLogoHeight
+        // vertical-align: middle
+        // border-radius: 50%
       .right-item
         line-height: $navLogoHeight
         font-weight: bolder

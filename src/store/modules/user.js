@@ -14,6 +14,7 @@ const user = {
       state.name = userInfo.name;
       state.account = userInfo.account;
       state.token = userInfo.accessToken;
+      state.avatar = userInfo.avatar;
     },
     deleteUser: (state) => {
       state.account = '';

@@ -12,7 +12,8 @@
       <el-row>
         <el-col :span="8">
           <div class="img">
-            <img class="avatar" :src="user.avatar">
+            <!-- <img class="avatar" :src="user.avatar"> -->
+            <avatar :url="user.avatar" width="160" height="160"></avatar>
           </div>
         </el-col>
         <el-col :span="16" style="text-align: left">
@@ -28,6 +29,8 @@
 </template>
 
 <script>
+import Avatar from '@/components/avatar';
+
 export default {
   data() {
     return {
@@ -35,6 +38,9 @@ export default {
       user: {
       }
     };
+  },
+  components: {
+    Avatar
   },
   async created() {
     try {

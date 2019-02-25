@@ -22,3 +22,10 @@ export function updatePassword(data) {
     data
   });
 }
+
+export function getQiniuToken() {
+  return request({
+    url: '/qiniu-token',
+    method: 'get'
+  });
+}
