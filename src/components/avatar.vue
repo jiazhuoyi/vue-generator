@@ -31,5 +31,6 @@ export default {
     position: relative
     background: $gray-lighter no-repeat
     background-size: cover
+    background-position: center
 </style>
 

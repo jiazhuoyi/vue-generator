@@ -121,6 +121,7 @@ export default {
 </script>
 
 <style lang="stylus">
+@import "~@/styles/index"
 .update-info
   .box-card
     width: 50%
@@ -128,6 +129,7 @@ export default {
     .header
       text-align: left
     .img
+      padding: $main-padding 0px
       .avatar
         width: 50%
     .info-form

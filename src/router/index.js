@@ -8,6 +8,7 @@ import Photo from '@/views/photo';
 import Main from '@/views/main';
 import Notice from '@/views/notice/notice';
 import UpdateInfo from '@/views/my/update-info';
+import Slider from '@/views/slider/index';
 
 Vue.use(Router);
 
@@ -84,7 +85,7 @@ const router = new Router({
       path: '/Photo',
       meta: {
         requireAuth: true,
-        icon: 'tickets',
+        icon: 'upload',
         title: '图片上传'
       },
       component: Main,
@@ -115,6 +116,25 @@ const router = new Router({
             requireAuth: true
           },
           component: Notice
+        }
+      ]
+    },
+    {
+      path: '/slider',
+      meta: {
+        requireAuth: true,
+        icon: 'view',
+        title: '轮播图'
+      },
+      component: Main,
+      children: [
+        {
+          path: '',
+          name: 'Slider',
+          meta: {
+            requireAuth: true
+          },
+          component: Slider
         }
       ]
     },
