@@ -1,12 +1,15 @@
 <template>
   <div>
     <el-menu-item :index="getLink(item.path)" v-if="hasShowingChild(item)">
-      <i :class="`el-icon-${item.meta.icon}`"></i>
+      <!-- <i :class="`el-icon-${item.meta.icon}`"></i> -->
+      <i :class="`iconfont ${item.meta.icon}`"></i>
       <span slot="title">{{item.meta.title}}</span>
     </el-menu-item>
     <el-submenu :index="`${index + 1}`" v-else>
       <template slot="title">
-        <i :class="`el-icon-${item.meta.icon}`"></i>
+        <!-- <i :class="`el-icon-${item.meta.icon}`"></i> -->
+        <i :class="`iconfont ${item.meta.icon}`"></i>
+        <!-- <span class="iconfont iconwode"></span> -->
         <span>{{item.meta.title}}</span>
       </template>
       <el-menu-item

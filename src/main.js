@@ -4,14 +4,20 @@ import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'font-awesome/css/font-awesome.min.css';
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
+import './assets/iconfont/iconfont.css';
 
 import App from './App';
 import router from './router';
 import store from './store';
+import filters from './utils/filter';
 
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
+Vue.use(filters);
 
 /* eslint-disable no-new */
 new Vue({
