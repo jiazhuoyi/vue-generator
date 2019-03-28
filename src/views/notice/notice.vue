@@ -153,8 +153,6 @@ export default {
 .unread
   background-color: #409EFF
 .notice-container
-  width: 90%
-  padding: $main-padding
   .icon
     display: inline-block
     width: 8px

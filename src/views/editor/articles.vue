@@ -82,8 +82,8 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
-.articles
-   width: 90%
-   margin: 0 auto
-</style>
+// <style lang="stylus" scoped>
+// .articles
+//    width: 90%
+//    margin: 0 auto
+// </style>
