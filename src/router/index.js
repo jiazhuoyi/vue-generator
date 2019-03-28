@@ -9,6 +9,9 @@ import Main from '@/views/main';
 import Notice from '@/views/notice/notice';
 import UpdateInfo from '@/views/my/update-info';
 import Slider from '@/views/slider/index';
+import MobileSwiper from '@/views/slider/mobile';
+import Editor from '@/views/editor/index';
+import Articles from '@/views/editor/articles';
 
 Vue.use(Router);
 
@@ -28,7 +31,7 @@ const router = new Router({
       meta: {
         requireAuth: true,
         title: '首页',
-        icon: 'menu'
+        icon: 'icon-shouye1'
       },
       component: Main,
       children: [{
@@ -51,7 +54,7 @@ const router = new Router({
       meta: {
         requireAuth: true,
         title: '我的',
-        icon: 'setting'
+        icon: 'icon-wode'
       },
       component: Main,
       children: [
@@ -85,7 +88,7 @@ const router = new Router({
       path: '/Photo',
       meta: {
         requireAuth: true,
-        icon: 'upload',
+        icon: 'icon-upload-01',
         title: '图片上传'
       },
       component: Main,
@@ -104,7 +107,7 @@ const router = new Router({
       path: '/notice',
       meta: {
         requireAuth: true,
-        icon: 'tickets',
+        icon: 'icon-tongzhi',
         title: '通知'
       },
       component: Main,
@@ -123,7 +126,7 @@ const router = new Router({
       path: '/slider',
       meta: {
         requireAuth: true,
-        icon: 'view',
+        icon: 'icon-icon_oa_',
         title: '轮播图'
       },
       component: Main,
@@ -135,6 +138,63 @@ const router = new Router({
             requireAuth: true
           },
           component: Slider
+        }
+      ]
+    },
+    {
+      path: '/mobile',
+      meta: {
+        requireAuth: true,
+        icon: 'icon-yidongduan',
+        title: '移动端轮播图'
+      },
+      component: Main,
+      children: [
+        {
+          path: '',
+          name: 'MobileSwiper',
+          meta: {
+            requireAuth: true
+          },
+          component: MobileSwiper
+        }
+      ]
+    },
+    {
+      path: '/editor',
+      meta: {
+        requireAuth: true,
+        icon: 'icon-bianji',
+        title: '富文本编辑器'
+      },
+      component: Main,
+      children: [
+        {
+          path: '',
+          name: 'Editor',
+          meta: {
+            requireAuth: true
+          },
+          component: Editor
+        }
+      ]
+    },
+    {
+      path: '/articles',
+      meta: {
+        requireAuth: true,
+        icon: 'icon-liebiao',
+        title: '文章列表'
+      },
+      component: Main,
+      children: [
+        {
+          path: '',
+          name: 'Articles',
+          meta: {
+            requireAuth: true
+          },
+          component: Articles
         }
       ]
     },

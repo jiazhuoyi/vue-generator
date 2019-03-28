@@ -6,21 +6,19 @@
     </router-link>
     <div class="right-menu">
       <router-link to="/notice">
-        <el-tooltip effect="dark" :content="`您有${noticeCount}条未读消息`" placement="bottom">
+        <el-tooltip effect="dark"
+          :content="`您有${$store.state.notice.totalCount}条未读消息`"
+          placement="bottom">
           <div class="notice">
-            <badge :max="noticeMax" :value="noticeCount" :is-hidden="isHidden">
-              <img class="avatar" src="../../static/icons/notice.svg">
+            <badge :max="noticeMax" :value="$store.state.notice.totalCount" :is-hidden="isHidden">
+              <!-- <img class="avatar" src="../../static/icons/notice.svg"> -->
+              <i class="iconfont avatar icon-tongzhi"></i>
             </badge>
           </div>
         </el-tooltip>
       </router-link>
       <el-dropdown trigger="click" @command="handleCommand">
         <div class="my">
-          <!-- <img class="avatar" src="../../static/icons/avatar.png"> -->
-          <!-- <img src="http://pndge8pv4.bkt.clouddn.com/avatar.jpg" class="avatar"> -->
-          <!-- <div class="avatar">
-            <avatar url="http://pndge8pv4.bkt.clouddn.com/avatar.jpg" width="40" height="40"></avatar>
-          </div> -->
           <avatar :url="$store.state.user.avatar" width="40" height="40"></avatar>
           <span class="right-item">{{$store.state.user.name}}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
@@ -45,6 +43,7 @@
 </template>
 
 <script>
+import { getNoticeCount } from '@/api/notice';
 import Badge from '@/components/badge';
 import Avatar from '@/components/avatar';
 
@@ -60,6 +59,10 @@ export default {
       noticeCount: 12,
       isHidden: false
     };
+  },
+  async mounted() {
+    const result = await getNoticeCount();
+    this.$store.commit('setTotalCount', result.totalCount);
   },
   methods: {
     handleCommand(command) {
@@ -122,6 +125,8 @@ export default {
       .avatar
         width: $navLogoWidth
         height: $navLogoHeight
+        line-height: $navLogoHeight
+        font-size: 25px
         vertical-align: middle
     .my
       display: inline-block

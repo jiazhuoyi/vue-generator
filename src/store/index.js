@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import createPersistedStated from 'vuex-persistedstate';
 import user from './modules/user';
 import system from './modules/system';
+import notice from './modules/notice';
 
 
 Vue.use(Vuex);
@@ -10,7 +11,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   modules: {
     user,
-    system
+    system,
+    notice
   },
   plugins: [createPersistedStated({
     storage: window.localStorage,
