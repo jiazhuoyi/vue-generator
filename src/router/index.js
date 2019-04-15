@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Dashboard from '@/views/dashboard';
+import Dashboard from '@/views/dashboard/dashboard';
 import Login from '@/views/login';
 import Info from '@/views/my/info';
 import UpdatePassword from '@/views/my/update-password';
@@ -10,8 +10,9 @@ import Notice from '@/views/notice/notice';
 import UpdateInfo from '@/views/my/update-info';
 import Slider from '@/views/slider/index';
 import MobileSwiper from '@/views/slider/mobile';
-import Editor from '@/views/editor/index';
+// import Editor from '@/views/editor/index';
 import Articles from '@/views/editor/articles';
+// import Socket from '@/views/socket/index';
 
 Vue.use(Router);
 
@@ -175,7 +176,7 @@ const router = new Router({
           meta: {
             requireAuth: true
           },
-          component: Editor
+          component: () => import('@/views/editor/index')
         }
       ]
     },
@@ -198,6 +199,25 @@ const router = new Router({
         }
       ]
     },
+    // {
+    //   path: '/socket',
+    //   meta: {
+    //     requireAuth: true,
+    //     icon: 'icon-shizhong1',
+    //     title: 'socket.io'
+    //   },
+    //   component: Main,
+    //   children: [
+    //     {
+    //       path: '',
+    //       name: 'Socket',
+    //       meta: {
+    //         requireAuth: true
+    //       },
+    //       component: Socket
+    //     }
+    //   ]
+    // },
     {
       path: '*',
       name: '404',

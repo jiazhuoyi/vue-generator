@@ -30,7 +30,6 @@ export default {
     getBreadCrumb() {
       this.breadlist = this.$route.matched
        .filter(item => (item.path != '/dashboard') && item.meta.title);
-      console.log('route:', this.$route.matched);
     }
   }
 }

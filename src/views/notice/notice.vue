@@ -86,7 +86,7 @@ export default {
       this.getNoticeList(newValue, 0, this.limit);
     }
   },
-  mounted() {
+  created() {
     this.getNoticeList(this.activeTab, this.pageNumber - 1, this.limit);
   },
   methods: {
@@ -137,11 +137,11 @@ export default {
     async getNoticeList(status, pageNumber, limit) {
       const result = await getNotices({ status, pageNumber, limit });
       this.notices = result.notices;
-      if (status != 0) {
-        const result = await getNoticeCount();
-        this.$store.commit('setTotalCount', result.totalCount);
-      }
       this.totalCount = result.totalCount;
+      if (~~status !== 0) {
+        const data = await getNoticeCount();
+        this.$store.commit('setTotalCount', data.totalCount);
+      }
     }
   }
 };

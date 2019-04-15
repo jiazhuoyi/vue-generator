@@ -10,7 +10,9 @@
           :content="`您有${$store.state.notice.totalCount}条未读消息`"
           placement="bottom">
           <div class="notice">
-            <badge :max="noticeMax" :value="$store.state.notice.totalCount" :is-hidden="isHidden">
+            <badge :max="noticeMax"
+              :value="$store.state.notice.totalCount"
+              :is-hidden="$store.state.notice.totalCount == 0">
               <!-- <img class="avatar" src="../../static/icons/notice.svg"> -->
               <i class="iconfont avatar icon-tongzhi"></i>
             </badge>
@@ -57,7 +59,7 @@ export default {
     return {
       noticeMax: 99,
       noticeCount: 12,
-      isHidden: false
+      isHidden: true
     };
   },
   async mounted() {

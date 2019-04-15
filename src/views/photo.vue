@@ -29,13 +29,13 @@ export default {
   data() {
     return {
       imgUrl: '',
-      domain: 'http://upload.qiniup.com',
+      domain: 'https://upload.qiniup.com',
       postData: {}
     };
   },
   methods: {
     handleSuccess(req) {
-      this.imgUrl = `http://cdn.jiazhuoyi.cn/${req.key}`;
+      this.imgUrl = `https://cdn.jiazhuoyi.cn/${req.key}`;
     },
     handleError() {
       this.$message({

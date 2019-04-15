@@ -50,7 +50,7 @@ export default {
       data: {}
     };
   },
-  async mounted() {
+  async created() {
     const result = await getArticleList();
     this.articles = result.articles;
   },

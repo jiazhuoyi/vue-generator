@@ -16,14 +16,14 @@
           <el-form-item prop="account" :error="accountError">
             <el-input v-model="loginForm.account" placeholder="请输入用户名">
               <template slot="prepend">
-                <i class="fa fa-user-circle-o"></i>
+                <i class="iconfont icon-icon-test"></i>
               </template>
             </el-input>
           </el-form-item>
           <el-form-item prop="password" :error="passwordError">
             <el-input v-model="loginForm.password" type="password" placeholder="请输入密码">
               <template slot="prepend">
-                <i class="fa fa-key"></i>
+                <i class="iconfont icon-Password"></i>
               </template>
             </el-input>
           </el-form-item>
@@ -144,7 +144,7 @@ export default {
 .login
   width: 100%
   height: 100%
-  background: url('../../static/img/bg.jpg')
+  background: url('https://cdn.jiazhuoyi.cn/bg.jpg')
   background-size: cover
   background-position: center
   position: relative
