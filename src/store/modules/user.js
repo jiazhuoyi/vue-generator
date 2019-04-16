@@ -8,7 +8,8 @@ const user = {
     token: '',
     roles: [],
     avatar: '',
-    last_login: ''
+    last_login: '',
+    visit_count: ''
   },
   mutations: {
     setUser: (state, userInfo) => {
@@ -17,6 +18,8 @@ const user = {
       state.token = userInfo.accessToken;
       state.avatar = userInfo.avatar;
       state.last_login = userInfo.last_login;
+      state.visit_count = userInfo.visit_count;
+      state.ip = userInfo.ip;
     },
     deleteUser: (state) => {
       state.account = '';

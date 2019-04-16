@@ -20,8 +20,12 @@ function fillZero(str, len = 2) {
 export default function (Vue) {
   Vue.filter('date', (value) => {
     const date = new Date(parseInt(value, 10));
-    return value ? `${date.getFullYear()}-${fillZero(date.getMonth() + 1)}-
-      ${fillZero(date.getDate())} ${fillZero(date.getHours())}:
-      ${fillZero(date.getMinutes())}:${fillZero(date.getSeconds())}` : '';
+    const year = date.getFullYear();
+    const month = fillZero(date.getMonth() + 1);
+    const day = fillZero(date.getDate());
+    const hour = fillZero(date.getHours());
+    const minutes = fillZero(date.getMinutes());
+    const seconds = fillZero(date.getSeconds());
+    return value ? `${year}-${month}-${day} ${hour}:${minutes}:${seconds}` : '';
   });
 }

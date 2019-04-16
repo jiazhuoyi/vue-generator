@@ -1,9 +1,11 @@
 import axios from 'axios';
 import router from '@/router';
 import store from '@/store';
+// import { Loading } from 'element-ui';
 
 // const url = '/api/v1';
 // const url = `${process.env.API_HOST}/api/v1`;
+// let loadingInstance = '';
 
 const url = process.env.NODE_ENV === 'production' ? `${process.env.API_HOST}/api/v1` : '/api/v1';
 
