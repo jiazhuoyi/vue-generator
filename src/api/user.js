@@ -29,3 +29,11 @@ export function getQiniuToken() {
     method: 'get'
   });
 }
+
+export function signup(data) {
+  return request({
+    url: '/signup',
+    method: 'post',
+    data
+  });
+}

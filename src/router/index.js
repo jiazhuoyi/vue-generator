@@ -50,6 +50,11 @@ const router = new Router({
       component: Login
     },
     {
+      path: '/signup',
+      name: 'Signup',
+      component: () => import('@/views/signup/index')
+    },
+    {
       path: '/my',
       name: 'My',
       meta: {

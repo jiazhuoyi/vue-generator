@@ -15,7 +15,7 @@ const request = axios.create({
 });
 
 request.interceptors.request.use(async (config) => {
-  if (config.url === '/login') {
+  if (config.url === '/login' || config.url === '/signup') {
     return config;
   }
   console.log('===========================================================');

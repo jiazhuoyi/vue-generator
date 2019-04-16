@@ -1,12 +1,23 @@
 <template>
   <div class="login">
+    <video
+      class="video"
+      autoplay="autoplay"
+      loop="loop"
+      src="https://cdn.jiazhuoyi.cn/login.mp4">
+    </video>
     <div class="login-form">
       <div class="title-container">
         <p>Vue-generator</p>
       </div>
       <el-card>
         <div slot="header">
-          <span>欢迎登录</span>
+          <div class="tabs">
+            <a class="link">账号登录</a>
+            <!-- <span class="line"></span>
+            <a class="link">手机登录</a> -->
+          </div>
+          <!-- <span>账号登录 | 手机登录</span> -->
         </div>
         <el-form
           :model="loginForm"
@@ -26,7 +37,7 @@
                 <i class="iconfont icon-Password"></i>
               </template>
             </el-input>
-          </el-form-item>
+          </el-form-item>         
           <el-form-item>
             <el-button
               type="primary"
@@ -36,6 +47,9 @@
             </el-button>
           </el-form-item>
         </el-form>
+        <div class="other">
+          <router-link to="/signup">注册账户</router-link>
+        </div>
       </el-card>
     </div>
   </div>
@@ -144,18 +158,40 @@ export default {
 .login
   width: 100%
   height: 100%
-  background: url('https://cdn.jiazhuoyi.cn/bg.jpg')
+  background: url('https://cdn.jiazhuoyi.cn/login.jpg')
   background-size: cover
   background-position: center
   position: relative
+  .video
+    width: 100%
+    height: 100%
+    object-fit: fill
   &-form
     position: absolute
-    right: 160px
+    right: 7%
     top: 50%
     transform: translateY(-70%)
-    width: 350px
+    min-width: 18%
     .title-container
       font-size: 50px
-      color: #eee
+      color: #eeeeee
+    .tabs
+      text-align: center
+      color: rgba(0,0,0,.45)
+      font-size: 20px
+      .line
+        width: 1px
+        height: 24px
+        margin: 0 35px 0 42px
+        border: 1px solid #e0e0e0
+  .other
+    width: 100%
+    text-align: right
+    font-size: 10px
+    a
+      text-decoration: none
+      color: #303133
+      color: rgba(0,0,0,.45)
+
 </style>
 
