@@ -15,10 +15,13 @@ export function sumbitArticle(data) {
   });
 }
 
-export function getArticleDetail() {
+export function getArticleDetail(id) {
   return request({
     url: '/article',
-    method: 'get'
+    method: 'get',
+    params: {
+      id
+    }
   });
 }
 

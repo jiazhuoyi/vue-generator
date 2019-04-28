@@ -12,6 +12,7 @@ import Slider from '@/views/slider/index';
 import MobileSwiper from '@/views/slider/mobile';
 // import Editor from '@/views/editor/index';
 import Articles from '@/views/editor/articles';
+import Detail from '@/views/editor/detail';
 // import Socket from '@/views/socket/index';
 
 Vue.use(Router);
@@ -53,6 +54,27 @@ const router = new Router({
       path: '/signup',
       name: 'Signup',
       component: () => import('@/views/signup/index')
+    },
+    {
+      path: '/system',
+      name: 'System',
+      meta: {
+        requireAuth: true,
+        title: '系统监控',
+        icon: 'icon-xitong'
+      },
+      component: Main,
+      children: [
+        {
+          path: '',
+          name: 'system',
+          meta: {
+            requireAuth: true,
+            title: '系统'
+          },
+          component: () => import('@/views/system/system')
+        }
+      ]
     },
     {
       path: '/my',
@@ -190,7 +212,8 @@ const router = new Router({
       meta: {
         requireAuth: true,
         icon: 'icon-liebiao',
-        title: '文章列表'
+        title: '文章列表',
+        breadCrumb: true
       },
       component: Main,
       children: [
@@ -198,9 +221,20 @@ const router = new Router({
           path: '',
           name: 'Articles',
           meta: {
+            breadCrumb: true,
             requireAuth: true
           },
           component: Articles
+        },
+        {
+          path: 'detail/:id',
+          name: 'Detail',
+          title: '详情页',
+          meta: {
+            breadCrumb: true,
+            requireAuth: true
+          },
+          component: Detail
         }
       ]
     },

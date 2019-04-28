@@ -15,6 +15,13 @@ export function getUserInfo() {
   });
 }
 
+export function getLoginlogs() {
+  return request({
+    url: '/login-logs',
+    method: 'get'
+  });
+}
+
 export function updatePassword(data) {
   return request({
     url: '/password',

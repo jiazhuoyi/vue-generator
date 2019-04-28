@@ -7,7 +7,7 @@
 </template>
 
 <script>
-const echarts = require('echarts');
+// import echarts from '@/utils/echarts';
 
 export default {
   mounted() {

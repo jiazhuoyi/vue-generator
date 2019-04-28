@@ -27,7 +27,7 @@
         align="center">
         <template slot-scope="scope">
           <el-button
-            size="mini" @click="showDetail(scope.row.content)">查看</el-button>
+            size="mini" @click="showDetail(scope.row._id)">查看</el-button>
           <el-button
             size="mini"
             type="danger" @click="deleteArticle(scope.row._id)">删除</el-button>
@@ -55,10 +55,14 @@ export default {
     this.articles = result.articles;
   },
   methods: {
-    showDetail(content) {
-      this.$alert(content, '预览文章', {
-        dangerouslyUseHTMLString: true
-      });
+    // showDetail(content) {
+    //   this.$alert(content, '预览文章', {
+    //     dangerouslyUseHTMLString: true
+    //   });
+    // },
+    showDetail(id) {
+      // this.$router.push({ path: '/articles/detail' });
+       this.$router.push({ path: `/articles/detail/${id}` });
     },
     deleteArticle(id) {
       this.$confirm('此操作将永久删除该文件, 是否继续？', '提示',

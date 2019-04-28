@@ -7,10 +7,13 @@
 </template>
 
 <script>
-const echarts = require('echarts');
+// import echarts from '@/utils/echarts';
+import { getLoginlogs } from '@/api/user';
 
 export default {
-  mounted() {
+  async mounted() {
+    const { loginlogs } = await getLoginlogs();
+    console.log('---result:', loginlogs);
     const myChart = echarts.init(this.$refs.myEchart);
     myChart.setOption({
       title: {
@@ -18,13 +21,13 @@ export default {
       },
       tooltip: {},
       xAxis: {
-        data: ['04-11', '04-12', '04-13', '04-14', '04-15', '04-16']
+        data: loginlogs.dates
       },
       yAxis: {},
       series: [{
         name: '访问次数',
         type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
+        data: loginlogs.counts
       }]
     });
   }

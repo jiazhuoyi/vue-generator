@@ -4,7 +4,7 @@
       class="video"
       autoplay="autoplay"
       loop="loop"
-      src="https://cdn.jiazhuoyi.cn/login.mp4">
+      src="https://cdn.jiazhuoyi.cn/login2.mp4">
     </video>
     <div class="login-form">
       <div class="title-container">
@@ -158,7 +158,7 @@ export default {
 .login
   width: 100%
   height: 100%
-  background: url('https://cdn.jiazhuoyi.cn/login.jpg')
+  background: url('https://cdn.jiazhuoyi.cn/login2.jpg')
   background-size: cover
   background-position: center
   position: relative

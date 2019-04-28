@@ -36,7 +36,6 @@ export default {
   },
   data() {
     return {
-      content: '<p class="ql-indent-1"><strong>12313123</strong></p>',
       editorOption: {},
       editorForm: {},
       article: {},
