@@ -23,14 +23,14 @@
                 <i class="iconfont icon-Password"></i>
               </template>
             </el-input>
-          </el-form-item>  
+          </el-form-item>
           <el-form-item prop="secondPassword" :error="passwordError">
             <el-input v-model="signupForm.secondPassword" type="password" placeholder="请确认密码">
               <template slot="prepend">
                 <i class="iconfont icon-Password"></i>
               </template>
             </el-input>
-          </el-form-item>         
+          </el-form-item>
           <el-form-item>
             <el-row>
               <el-col :span="14">
@@ -72,7 +72,7 @@ export default {
       if (value === '') {
         callback(new Error('请确认密码'));
       }
-      if(value !== this.signupForm.firstPassword) {
+      if (value !== this.signupForm.firstPassword) {
         callback(new Error('两次密码不一致'));
       }
       callback();

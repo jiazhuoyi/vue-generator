@@ -1,8 +1,5 @@
 <template>
   <div class="article-detail">
-    <!-- <div class="ql-container ql-snow">
-      <div class="ql-editor" v-html="article.content"></div>
-    </div> -->
     <div class="bar">
       <div class="title">{{article.title}}</div>
       <div class="info">
@@ -18,6 +15,7 @@
 
 <script>
 import { getArticleDetail } from '@/api/article';
+
 export default {
   data() {
     return {
@@ -60,5 +58,3 @@ export default {
       .date
         float: left
 </style>
-
-

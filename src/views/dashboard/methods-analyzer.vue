@@ -28,7 +28,7 @@ export default {
       }]
     });
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -37,5 +37,3 @@ export default {
     width: 100%
     height: 400px
 </style>
-
-

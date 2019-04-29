@@ -1,5 +1,14 @@
 <template>
   <div class="editor">
+    <!-- <div class="upload"></div> -->
+    <el-upload
+      :action="domain"
+      :show-file-list="false"
+      :data="postData"
+      :on-success="handleSuccess"
+      :before-upload="beforeUpload"
+      :on-error="handleError">
+    </el-upload>
     <el-form
      :model="article"
      :rules="articleRules"
@@ -28,7 +37,24 @@
 <script>
 import { quillEditor } from 'vue-quill-editor';
 import { sumbitArticle } from '@/api/article';
+import { getQiniuToken } from '@/api/user';
 
+const toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],
+  ['blockquote', 'code-block'],
+  [{ header: 1 }, { header: 2 }],
+  [{ list: 'ordered' }, { list: 'bullet' }],
+  [{ script: 'sub' }, { script: 'super' }],
+  [{ indent: '-1' }, { indent: '+1' }],
+  [{ direction: 'rtl' }],
+  [{ size: ['small', false, 'large', 'huge'] }],
+  [{ header: [1, 2, 3, 4, 5, 6, false] }],
+  [{ color: [] }, { background: [] }],
+  [{ font: [] }],
+  [{ align: [] }],
+  ['link', 'image', 'video'],
+  ['clean']
+];
 export default {
   name: 'Editor',
   components: {
@@ -36,13 +62,37 @@ export default {
   },
   data() {
     return {
-      editorOption: {},
+      loading: null,
+      editorOption: {
+        placeholder: '请输入文章内容',
+        theme: 'snow',
+        modules: {
+          toolbar: {
+            container: toolbarOptions,
+            handlers: {
+              image: (value) => {
+                if (value) {
+                  document.querySelector('.el-upload__input').click();
+                } else {
+                  this.quill.format('image', false);
+                }
+              }
+            }
+          }
+        }
+      },
       editorForm: {},
       article: {},
       articleRules: {
         title: { required: true, message: '请输入标题', trigger: 'blur' }
-      }
+      },
+      domain: 'https://upload.qiniup.com',
+      postData: {}
     };
+  },
+  async mounted() {
+    const result = await getQiniuToken();
+    this.postData.token = result.token;
   },
   methods: {
     submitEditorForm(formName) {
@@ -59,6 +109,31 @@ export default {
           }
         }
       });
+    },
+    beforeUpload() {
+      this.loading = this.$loading({
+        text: '图片上传中',
+        spinner: 'el-icon-loading'
+      });
+    },
+    handleSuccess(res) {
+      console.log('----res:', res);
+      const quill = this.$refs.editor.quill;
+      if (res.key) {
+        const length = quill.getSelection().index;
+        quill.insertEmbed(length,
+          'image',
+          `https://cdn.jiazhuoyi.cn/${res.key}`);
+        quill.setSelection(length + 1);
+      } else {
+        this.$message.error('图片插入失败');
+      }
+      this.loading.close();
+      console.log('quill:', quill);
+    },
+    handleError() {
+      this.loading.close();
+      this.$message.error('图片插入失败');
     }
   }
 };

@@ -37,7 +37,7 @@
                 <i class="iconfont icon-Password"></i>
               </template>
             </el-input>
-          </el-form-item>         
+          </el-form-item>
           <el-form-item>
             <el-button
               type="primary"

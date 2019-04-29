@@ -29,10 +29,10 @@ export default {
   methods: {
     getBreadCrumb() {
       this.breadlist = this.$route.matched
-       .filter(item => (item.path != '/dashboard') && item.meta.title);
+        .filter(item => (item.path !== '/dashboard') && (item.meta.title && item.meta.breadCrumb));
     }
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>

@@ -39,6 +39,7 @@
 
 <script>
 import { getArticleList, deleteArticle } from '@/api/article';
+
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
 import 'quill/dist/quill.bubble.css';
@@ -55,14 +56,8 @@ export default {
     this.articles = result.articles;
   },
   methods: {
-    // showDetail(content) {
-    //   this.$alert(content, '预览文章', {
-    //     dangerouslyUseHTMLString: true
-    //   });
-    // },
     showDetail(id) {
-      // this.$router.push({ path: '/articles/detail' });
-       this.$router.push({ path: `/articles/detail/${id}` });
+      this.$router.push({ path: `/articles/detail/${id}` });
     },
     deleteArticle(id) {
       this.$confirm('此操作将永久删除该文件, 是否继续？', '提示',
