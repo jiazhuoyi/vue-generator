@@ -68,7 +68,7 @@ export default {
       box-sizing: border-box
       position: relative
       // margin-left: $sidebar-width
-      margin: 20px 20px 0 240px
+      margin: 20px 20px 100px 240px
       padding: $main-padding
       background: #fff
       border-left: 1px solid #e8e8e8

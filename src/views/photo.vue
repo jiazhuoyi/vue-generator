@@ -1,6 +1,5 @@
 <template>
   <div class="photo">
-    <!-- <h1>article</h1> -->
     <el-upload class="avatar-uploader"
       :action="domain"
       :show-file-list = "false"
@@ -48,6 +47,7 @@ export default {
     try {
       const result = await getQiniuToken();
       this.postData.token = result.token;
+      this.postData.key = '789';
     } catch (error) {
       this.$message({
         message: error.msg,

@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created() {
+    let loading = document.getElementById('loading');
+    if (loading) {
+      document.body.removeChild(loading);
+    }
+  }
 };
 </script>
 

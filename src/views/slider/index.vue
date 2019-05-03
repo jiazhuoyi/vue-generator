@@ -1,18 +1,17 @@
 <template>
   <div class="slider">
-    <swiper
-      :images="images"
-      :autoplay="true"
-      :interval="2500">
-    </swiper>
+    <div class="pc-swiper">
+      <swiper
+        :images="images"
+        :autoplay="true"
+        :interval="2500">
+      </swiper>
+    </div>
     <div class="document">
       <p>pc端的轮播图：（不支持移动端的左右滑动）</p>
       <el-table
         :data="descTable" border>
-        <el-table-column
-          prop="arg"
-          label="参数"
-          align="center">
+        <el-table-column prop="arg" label="参数" align="center">
         </el-table-column>
         <el-table-column
           prop="desc"
@@ -87,9 +86,10 @@ export default {
 
 <style lang="stylus" scoped>
 .slider
-  height: 0;
-  padding-bottom: 37.5%
-  margin: 0 auto
+  .pc-swiper
+    height: 0;
+    padding-bottom: 37.5%
+    margin: 0 auto
   .document
     width: 70%
     margin: 0 auto
